@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', 'PagesController@index');
+use App\Http\Controllers\PagesController;
+Route::get('/', [PagesController::class, 'index']);
+Route::get('/about', [PagesController::class, 'about']);
+Route::get('/services', [PagesController::class, 'services']);
+
+// Route::get('/users/{id}/{name}', function($id,$name){
+//     return 'This is user '.$name.' with an ID of '.$id;
+// });
