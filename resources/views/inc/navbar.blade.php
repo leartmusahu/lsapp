@@ -11,4 +11,7 @@
       <li class="nav-item"><a href="/posts" class="nav-link">Blog</a></li>
 
     </ul>
+    <ul class="nav navbar-nav navbar-left">
+      <li><a href="/posts/create">Create Post</a></li>
+    </ul>
   </header>
