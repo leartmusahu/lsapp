@@ -8,6 +8,7 @@
       <li class="nav-item"><a href="/" class="nav-link" aria-current="page">Home</a></li>
       <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
       <li class="nav-item"><a href="/services" class="nav-link">Services</a></li>
+      <li class="nav-item"><a href="/posts" class="nav-link">Blog</a></li>
 
     </ul>
   </header>

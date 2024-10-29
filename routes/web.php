@@ -23,4 +23,5 @@ Route::get('/services', [PagesController::class, 'services']);
 //     return 'This is user '.$name.' with an ID of '.$id;
 // });
 
-Route::resource('posts', 'PostsController');
+use App\Http\Controllers\PostsController;
+Route::resource('posts', PostsController::class);
