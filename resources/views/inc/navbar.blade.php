@@ -1,17 +1,66 @@
-<header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-      <span class="fs-4">{{config('app.name','LSAPP')}}</span>
-    </a>
+  <nav class="navbar navbar-expand-md shadow-sm">
+    <div class="container">
+        <a class="navbar-brand" href="{{ url('/') }}">
+            {{ config('app.name', 'Laravel') }}
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <ul class="nav nav-pills">
-      <li class="nav-item"><a href="/" class="nav-link" aria-current="page">Home</a></li>
-      <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
-      <li class="nav-item"><a href="/services" class="nav-link">Services</a></li>
-      <li class="nav-item"><a href="/posts" class="nav-link">Blog</a></li>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Left Side Of Navbar -->
+            <ul class="navbar-nav me-auto">
 
-    </ul>
-    <ul class="nav navbar-nav navbar-left">
-      <li><a href="/posts/create">Create Post</a></li>
-    </ul>
-  </header>
+            </ul>
+
+            <ul class="nav nav-pills">
+              <li class="nav-item"><a href="/" class="nav-link" aria-current="page">Home</a></li>
+              <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
+              <li class="nav-item"><a href="/services" class="nav-link">Services</a></li>
+              <li class="nav-item"><a href="/posts" class="nav-link">Blog</a></li>
+              <li><a href="/posts/create">Create Post</a></li>
+        
+            </ul>
+
+            <!-- Right Side Of Navbar -->
+            <ul class="navbar-nav ms-auto">
+                <!-- Authentication Links -->
+                @guest
+                    @if (Route::has('login'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        </li>
+                    @endif
+
+                    @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </li>
+                    @endif
+                @else
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }}
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+
+                              <a class="dropdown-item" href="/home">Dashboard</a>
+                        </div>
+
+                        
+                    </li>
+                @endguest
+            </ul>
+        </div>
+    </div>
+</nav>
